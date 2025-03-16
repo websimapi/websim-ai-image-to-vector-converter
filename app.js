@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get aspect ratio values
             const aspectRatio = aspectRatioSelect.value;
             
-            // Generate image using AI
+            // Generate image using LLM API
             const result = await websim.imageGen({
                 prompt: prompt,
                 aspect_ratio: aspectRatio
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 opttolerance: 0.2
             };
 
-            // Trace the image
+            // Trace the image using POTRACE
             const paths = await POTRACE.traceUrl(currentImageUrl, options);
             
             // Get SVG string
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             svgContainer.innerHTML = '<p>Error converting image to vector</p>';
         }
     }
-
+    
     function updateVectorDetail() {
         if (currentImageUrl) {
             convertToVector();
@@ -133,4 +133,3 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => URL.revokeObjectURL(url), 100);
     }
 });
-
