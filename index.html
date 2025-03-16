@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image to Vector Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Image to Vector Converter</h1>
+        
+        <div class="image-generator">
+            <input type="text" id="prompt-input" placeholder="Describe the image you want to generate">
+            <select id="aspect-ratio">
+                <option value="1:1">1:1 (Square)</option>
+                <option value="16:9">16:9 (Landscape)</option>
+                <option value="9:16">9:16 (Portrait)</option>
+                <option value="4:3">4:3</option>
+                <option value="3:2">3:2</option>
+            </select>
+            <button id="generate-btn">Generate Image</button>
+        </div>
+        
+        <div class="loading-indicator" id="loading">
+            <div class="spinner"></div>
+            <p>Generating your image...</p>
+        </div>
+        
+        <div class="result-container" id="result-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="original">Original</button>
+                <button class="tab-btn" data-tab="vector">Vector</button>
+            </div>
+            
+            <div class="tab-content">
+                <div class="tab-pane active" id="original-tab">
+                    <img id="generated-image" alt="Generated image will appear here">
+                </div>
+                <div class="tab-pane" id="vector-tab">
+                    <div id="svg-container"></div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="download-btn" disabled>Download SVG</button>
+                <div class="settings">
+                    <label for="detail-slider">Vector Detail: </label>
+                    <input type="range" id="detail-slider" min="1" max="5" value="3" step="0.5">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="importmap">
+    {
+        "imports": {
+            "potrace-js": "https://cdn.jsdelivr.net/npm/potrace-js@0.0.6/src/potrace.js"
+        }
+    }
+    </script>
+    <script type="module" src="app.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
